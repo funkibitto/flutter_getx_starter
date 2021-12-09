@@ -9,14 +9,14 @@ class SettingView extends GetView<SettingController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SettingView'),
-        centerTitle: true,
+        title: Text('계정'),
+        centerTitle: false,
       ),
-      body: Center(
-        child: Text(
-          'SettingView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: Column(
+        children: [
+          
+
+        ],
       ),
     );
   }
