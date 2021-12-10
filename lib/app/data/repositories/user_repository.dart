@@ -6,7 +6,7 @@ class UserRepository {
 
   UserRepository({required this.apiClient});
 
-  Future<UserModel> getUser() {
+  Future<UserModel?> getUser() {
     return apiClient.getUser();
   }
 }

@@ -10,6 +10,7 @@ dependencies:
   dio: 
   flutter_secure_storage: 
   shared_preferences: 
+  logger: ^1.1.0
   cupertino_icons: ^1.0.2
   get: 4.5.1
   flutter: 
@@ -25,4 +26,7 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
+
+  assets:
+  - assets/json/
 

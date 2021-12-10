@@ -1,12 +1,42 @@
+import 'package:flutter_getx_starter/app/data/models/user/user_model.dart';
+import 'package:flutter_getx_starter/app/data/providers/api/user_api_provider.dart';
+import 'package:flutter_getx_starter/app/data/repositories/user_repository.dart';
 import 'package:get/get.dart';
 
 class SettingController extends GetxController {
-  //TODO: Implement SettingController
+  RxBool isLoading = false.obs;
+  late UserRepository _userRepository;
+  late Rxn<UserModel> user = Rxn<UserModel>();
 
-  final count = 0.obs;
+  SettingController() {
+    _userRepository = UserRepository(apiClient: UserApiProvider());
+  }
+
+  static SettingController get to => Get.find();
+
   @override
   void onInit() {
+    print('=============UserModel start ${user}');
+    updateUserInfo();
     super.onInit();
+  }
+
+  void conStart() {
+    print('=============UserModel conStart ${user}');
+  }
+
+  void updateUserInfo() async {
+    isLoading(true);
+    await 3.delay();
+    print('LOADING USER INFO ....');
+
+    final result = await _userRepository.getUser();
+    if (result != null) {
+      user.value = result;
+    } else {
+      print('!!!!!!!! No data');
+    }
+    isLoading(false);
   }
 
   @override
@@ -16,5 +46,4 @@ class SettingController extends GetxController {
 
   @override
   void onClose() {}
-  void increment() => count.value++;
 }
