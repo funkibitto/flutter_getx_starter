@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getx_starter/app/modules/auth/services/auth_service.dart';
 
 import 'package:get/get.dart';
 
@@ -34,12 +35,14 @@ class HomeView extends GetView<HomeController> {
               Get.toNamed('/login');
             },
           ),
-          IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {
-              Get.toNamed('/setting');
-            },
-          ),
+          if (AuthService.to.isLoggedIn == true) ...[
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {
+                Get.toNamed('/setting');
+              },
+            )
+          ],
         ],
       ),
       body: Center(

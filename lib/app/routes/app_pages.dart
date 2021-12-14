@@ -1,6 +1,5 @@
 import 'package:flutter_getx_starter/app/middleware/authcation_middleware.dart';
 import 'package:get/get.dart';
-
 import 'package:flutter_getx_starter/app/modules/home/bindings/home_binding.dart';
 import 'package:flutter_getx_starter/app/modules/home/views/home_view.dart';
 import 'package:flutter_getx_starter/app/modules/login/bindings/login_binding.dart';
@@ -20,9 +19,6 @@ class AppPages {
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
-      middlewares: [
-        AuthcationMiddleware(),
-      ],
     ),
     GetPage(
       name: _Paths.LOGIN,
