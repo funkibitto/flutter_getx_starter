@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-
+import 'app/modules/auth/services/auth_service.dart';
 import 'app/routes/app_pages.dart';
 
 const MaterialColor primaryBlack = MaterialColor(
@@ -35,6 +34,11 @@ Future main() async {
           secondary: Colors.white,
         ),
         textTheme: const TextTheme(bodyText2: TextStyle(color: Colors.white)),
+      ),
+      initialBinding: BindingsBuilder(
+        () {
+          Get.put(AuthService());
+        },
       ),
       title: "Application",
       initialRoute: AppPages.INITIAL,

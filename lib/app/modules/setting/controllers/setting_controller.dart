@@ -26,15 +26,13 @@ class SettingController extends GetxController {
   }
 
   void updateUserInfo() async {
-    isLoading(true);
     await 3.delay();
+    isLoading(true);
     print('LOADING USER INFO ....');
 
     final result = await _userRepository.getUser();
     if (result != null) {
       user.value = result;
-    } else {
-      print('!!!!!!!! No data');
     }
     isLoading(false);
   }
