@@ -12,7 +12,7 @@ dependencies:
   shared_preferences: 
   logger: ^1.1.0
   cupertino_icons: ^1.0.2
-  get: 4.5.1
+  get: 4.6.1
   flutter: 
     sdk: flutter
 

@@ -9,9 +9,7 @@ class UserApiProvider {
   Future<UserModel?> getUser() async {
     try {
       String data = await rootBundle.loadString('assets/json/user.json');
-      print('DATAATATA ========== ${json.decode(data)}');
       UserModel res = UserModel.fromJson(json.decode(data));
-      print('res =============   $res');
       return res;
     } on Exception catch (e) {
       logger.e(e);
