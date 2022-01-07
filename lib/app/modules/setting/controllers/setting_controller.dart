@@ -27,7 +27,7 @@ class SettingController extends GetxController {
 
   void updateUserInfo() async {
     isLoading(true);
-    await 1.delay();
+    // await 1.delay();
 
     final result = await _userRepository.getUser();
     if (result != null) {
