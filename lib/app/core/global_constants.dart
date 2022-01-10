@@ -7,4 +7,6 @@ class GlobalConstants {
     {'icon': FontAwesomeIcons.shoppingBag, 'text': 'Shopping'},
     {'icon': FontAwesomeIcons.car, 'text': 'MyCar'},
   ];
+
+  static const String youtubeApiKey = 'AIzaSyBlZnSmDkF0fGnAkhHmWf6NUnYdCmGQTMs';
 }

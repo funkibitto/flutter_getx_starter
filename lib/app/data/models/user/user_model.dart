@@ -1,17 +1,36 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+// To parse this JSON data, do
+//
+//     final userModel = userModelFromJson(jsonString);
+import 'dart:convert';
 
-part 'user_model.freezed.dart';
-part 'user_model.g.dart';
+UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
-@freezed
-class UserModel with _$UserModel {
-  const factory UserModel({
-    required String id,
-    required String name,
-    @JsonKey(name: 'profile_image_url') required String profileImageUrl,
-    required String email,
-  }) = _UserModel;
+String userModelToJson(UserModel data) => json.encode(data.toJson());
 
-  factory UserModel.fromJson(Map<String, dynamic> json) =>
-      _$UserModelFromJson(json);
+class UserModel {
+  UserModel({
+    required this.id,
+    required this.name,
+    required this.profileImageUrl,
+    required this.email,
+  });
+
+  String id;
+  String name;
+  String profileImageUrl;
+  String email;
+
+  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        id: json["id"],
+        name: json["name"],
+        profileImageUrl: json["profile_image_url"],
+        email: json["email"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "profile_image_url": profileImageUrl,
+        "email": email,
+      };
 }

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_starter/app/modules/auth/services/auth_service.dart';
+import 'package:flutter_getx_starter/app/modules/home/controllers/youtube_controller.dart';
 import 'package:get/get.dart';
 
 class YoutubeView extends StatelessWidget {
-  const YoutubeView({Key? key}) : super(key: key);
+  final controller = Get.put(YoutubeController());
 
   @override
   Widget build(BuildContext context) {
@@ -46,9 +47,9 @@ class YoutubeView extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text(
-          'YoutubeView is working',
-          style: TextStyle(fontSize: 20),
+        // child: Container(),
+        child: Obx(
+          () => Text(controller.youtubeList.value.items.toString()),
         ),
       ),
     );

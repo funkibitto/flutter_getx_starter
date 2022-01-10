@@ -1,7 +1,7 @@
 import 'package:dio/native_imp.dart';
 
-class DioService extends DioForNative {
-  DioService() {
+class HttpService extends DioForNative {
+  HttpService() {
     options.connectTimeout = 5000;
   }
 }
