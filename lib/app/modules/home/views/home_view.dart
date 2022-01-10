@@ -1,54 +1,92 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx_starter/app/modules/auth/services/auth_service.dart';
+import 'package:flutter_getx_starter/app/core/global_constants.dart';
+import 'package:flutter_getx_starter/app/modules/home/views/my_car_view.dart';
+import 'package:flutter_getx_starter/app/modules/home/views/shopping_view.dart';
+import 'package:flutter_getx_starter/app/modules/home/views/youtube_search_view.dart';
+import 'package:flutter_getx_starter/app/modules/home/views/youtube_view.dart';
 
-import 'package:get/get.dart';
+class HomeView extends StatefulWidget {
+  const HomeView({Key? key}) : super(key: key);
 
-import 'package:flutter_getx_starter/app/modules/home/controllers/home_controller.dart';
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
 
-class HomeView extends GetView<HomeController> {
+class _HomeViewState extends State<HomeView> {
+  int _activeTab = 0;
+
+  _changeActiveTab(value) {
+    setState(() {
+      _activeTab = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawerEdgeDragWidth: 20,
-      drawerEnableOpenDragGesture: false,
-      endDrawerEnableOpenDragGesture: false,
-      drawer: Drawer(
-        child: Container(
-          child: Center(
-            child: Text("Left menu"),
-          ),
+      resizeToAvoidBottomInset: false,
+      body: _getBody(),
+      bottomNavigationBar: _getFooter(),
+    );
+  }
+
+  Widget _getBody() {
+    return IndexedStack(
+      index: _activeTab,
+      children: [
+        YoutubeView(),
+        YoutubeSearchView(),
+        ShoppingView(),
+        MyCarView()
+      ],
+    );
+  }
+
+  Widget _getFooter() {
+    const _navigationItems = GlobalConstants.navigationItems;
+
+    return Container(
+      height: 80,
+      decoration: const BoxDecoration(color: Colors.black),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 10,
         ),
-      ),
-      appBar: AppBar(
-        title: Text('@Home'),
-        centerTitle: false,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.home),
-            onPressed: () {
-              Get.toNamed('/login');
-            },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: List.generate(
+            _navigationItems.length,
+            (index) => GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () => _changeActiveTab(index),
+              child: Container(
+                width: 80.0,
+                child: Column(
+                  children: [
+                    Icon(
+                      _navigationItems[index]['icon'],
+                      color: _activeTab == index
+                          ? Colors.white
+                          : Colors.white.withOpacity(0.5),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      _navigationItems[index]['text'],
+                      style: TextStyle(
+                          fontSize: 10,
+                          color: _activeTab == index
+                              ? Colors.white
+                              : Colors.white.withOpacity(0.5)),
+                    )
+                  ],
+                ),
+              ),
+            ),
           ),
-          IconButton(
-            icon: Icon(Icons.access_alarm_sharp),
-            onPressed: () {
-              Get.toNamed('/login');
-            },
-          ),
-          if (AuthService.to.isLoggedIn == true) ...[
-            IconButton(
-              icon: Icon(Icons.person),
-              onPressed: () {
-                Get.toNamed('/setting');
-              },
-            )
-          ],
-        ],
-      ),
-      body: Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
         ),
       ),
     );
