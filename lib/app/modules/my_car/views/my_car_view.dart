@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ShoppingView extends StatelessWidget {
-  const ShoppingView({Key? key}) : super(key: key);
+import 'package:get/get.dart';
 
+import '../controllers/my_car_controller.dart';
+
+class MyCarView extends GetView<MyCarController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.redAccent,
+      backgroundColor: Colors.yellowAccent,
       appBar: AppBar(
-        title: const Text('ShoppingView'),
+        title: Text('MyCarView'),
         centerTitle: true,
       ),
-      body: const Center(
+      body: Center(
         child: Text(
-          'ShoppingView is working',
+          'MyCarView is working',
           style: TextStyle(fontSize: 20),
         ),
       ),

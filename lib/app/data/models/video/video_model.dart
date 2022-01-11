@@ -1,17 +1,16 @@
 // To parse this JSON data, do
 //
-//     final youtubeVideoModel = youtubeVideoModelFromJson(jsonString);
+//     final videoModel = videoModelFromJson(jsonString);
 
 import 'dart:convert';
 
-YoutubeVideoModel youtubeVideoModelFromJson(String str) =>
-    YoutubeVideoModel.fromJson(json.decode(str));
+VideoModel videoModelFromJson(String str) =>
+    VideoModel.fromJson(json.decode(str));
 
-String youtubeVideoModelToJson(YoutubeVideoModel data) =>
-    json.encode(data.toJson());
+String videoModelToJson(VideoModel data) => json.encode(data.toJson());
 
-class YoutubeVideoModel {
-  YoutubeVideoModel({
+class VideoModel {
+  VideoModel({
     required this.kind,
     required this.etag,
     required this.id,
@@ -23,8 +22,7 @@ class YoutubeVideoModel {
   Id id;
   Snippet snippet;
 
-  factory YoutubeVideoModel.fromJson(Map<String, dynamic> json) =>
-      YoutubeVideoModel(
+  factory VideoModel.fromJson(Map<String, dynamic> json) => VideoModel(
         kind: json["kind"],
         etag: json["etag"],
         id: Id.fromJson(json["id"]),

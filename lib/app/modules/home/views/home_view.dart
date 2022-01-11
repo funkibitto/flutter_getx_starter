@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_getx_starter/app/core/global_constants.dart';
-import 'package:flutter_getx_starter/app/modules/home/views/my_car_view.dart';
-import 'package:flutter_getx_starter/app/modules/home/views/shopping_view.dart';
-import 'package:flutter_getx_starter/app/modules/home/views/youtube_search_view.dart';
-import 'package:flutter_getx_starter/app/modules/home/views/youtube_view.dart';
+import 'package:flutter_getx_starter/app/modules/my_car/views/my_car_view.dart';
+import 'package:flutter_getx_starter/app/modules/shopping/views/shopping_view.dart';
+import 'package:flutter_getx_starter/app/modules/video/views/video_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -33,12 +32,7 @@ class _HomeViewState extends State<HomeView> {
   Widget _getBody() {
     return IndexedStack(
       index: _activeTab,
-      children: [
-        YoutubeView(),
-        YoutubeSearchView(),
-        ShoppingView(),
-        MyCarView()
-      ],
+      children: [VideoView(), ShoppingView(), MyCarView()],
     );
   }
 
