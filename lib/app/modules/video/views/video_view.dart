@@ -3,11 +3,10 @@ import 'package:flutter_getx_starter/app/modules/auth/services/auth_service.dart
 import 'package:flutter_getx_starter/app/modules/video/controllers/video_controller.dart';
 import 'package:get/get.dart';
 
-class VideoView extends StatelessWidget {
-  final controller = Get.put(VideoController());
-
+class VideoView extends GetView<VideoController> {
   @override
   Widget build(BuildContext context) {
+    print('===================VideoView*****************');
     return Scaffold(
       backgroundColor: Colors.redAccent,
       drawerEdgeDragWidth: 20,

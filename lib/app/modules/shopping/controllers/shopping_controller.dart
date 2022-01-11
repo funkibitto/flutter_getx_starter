@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class ShoppingController extends GetxController {
   //TODO: Implement ShoppingController
 
-  final count = 0.obs;
+  final count = 1000.obs;
   @override
   void onInit() {
     print("ShoppingController ===========================");
